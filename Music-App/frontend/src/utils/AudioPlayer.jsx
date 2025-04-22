@@ -67,13 +67,13 @@ const AudioPlayer = () => {
 
   return (
     <div
-      className="fixed flex justify-between items-center bottom-0 right-0 left-0 bg-gradient-to-r from-gray-900 via-gray-800 to-gray-900 text-white px-2 lg:px-2  py-3 shadow-xl border-t border-gray-800/50"
+      className="fixed flex justify-between items-center bottom-0 right-0 left-0 bg-gradient-to-r from-gray-900 via-gray-800 to-gray-900 text-white px-2 lg:px-4 py-3 shadow-xl border-t border-gray-800/50"
     >
-      {/* Song Info */}
-      <div className="flex space-x-3 lg:space-x-2 items-center">
+      {/* Song Info - Reduced max width to create more space */}
+      <div className="flex space-x-3 lg:space-x-2 items-center w-1/4">
         <img src={song.songImage || stereo} alt={song.songName || "Music"} className="rounded-lg w-12 h-12 object-cover shadow-lg" />
         <div>
-          <h3 className="text-base font-medium text-white truncate max-w-[120px] lg:max-w-xs">
+          <h3 className="text-base font-medium text-white truncate max-w-[100px] lg:max-w-xs">
             {song.songName || "No song selected"}
           </h3>
           <p className="text-xs text-gray-300 truncate">
@@ -82,9 +82,9 @@ const AudioPlayer = () => {
         </div>
       </div>
 
-      {/* Controls */}
-      <div className="flex flex-col -space-x-8 items-center space-y-1">
-        <div className="flex items-center space-x-5 lg:space-x-6">
+      {/* Controls - Properly centered */}
+      <div className="flex flex-col items-center space-y-1 w-2/4 justify-center">
+        <div className="flex items-center justify-center space-x-5 lg:space-x-6">
           <button className="text-gray-300 hover:text-lime-400 transition-colors text-xl">
             <FiSkipBack />
           </button>
@@ -100,8 +100,8 @@ const AudioPlayer = () => {
         </div>
         
         {/* Progress Bar - always visible but adapts for smaller screens */}
-        <div className="hidden lg:flex items-center space-x-3 w-80">
-          <span className="text-xs text-gray-400 font-medium min-w-[40px]">
+        <div className="hidden lg:flex items-center space-x-3 w-full">
+          <span className="text-xs text-gray-400 font-medium min-w-[40px] text-right">
             {calculateTime(parseInt(currentTime))}
           </span>
           <input
@@ -121,7 +121,7 @@ const AudioPlayer = () => {
       </div>
 
       {/* Volume Control - visible only on large screens */}
-      <div className="hidden lg:flex items-center space-x-3">
+      <div className="hidden lg:flex items-center justify-end space-x-3 w-1/4">
         <span className="text-xs font-medium text-gray-400">
           {calculateTime(parseInt(currentTime))}/{calculateTime(parseInt(duration))}
         </span>
